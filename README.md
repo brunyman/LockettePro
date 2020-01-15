@@ -1,8 +1,8 @@
 # LockettePro
 ### LockettePro - A much better Lockette plugin for Bukkit
 
-This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro
-Also contains updates from: https://github.com/NyaaCat/LockettePro
+This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro  
+Also contains updates from: https://github.com/NyaaCat/LockettePro  
 
 LockettePro is a block-protection plugin based on Lockette (https://github.com/Acru/Lockette), the code base is entirely re-written. It is 100% compatable with original Lockette, and the plugin behaviors are also 100% same.
 
