@@ -3,6 +3,7 @@ package me.crafter.mc.lockettepro;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.DoubleChest;
+import org.bukkit.block.Hopper;
 import org.bukkit.entity.minecart.HopperMinecart;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -33,6 +34,14 @@ public class BlockInventoryMoveListener implements Listener {
                         ((HopperMinecart)event.getDestination().getHolder()).remove();
                         break;
                     }
+                } else if (event.getDestination().getHolder() instanceof Hopper || event.getSource().getHolder() instanceof Hopper) {
+                	if (isInventoryLocked(event.getDestination())) {
+                		Block sourceInventoryBlock = event.getSource().getLocation().getBlock();
+                		Block destinationInventoryBlock = event.getDestination().getLocation().getBlock();
+                		if (LocketteProAPI.getOwner(sourceInventoryBlock).matches(LocketteProAPI.getOwner(destinationInventoryBlock))) {
+                			event.setCancelled(false);
+                		}
+                	}
                 }
                 return;
             }

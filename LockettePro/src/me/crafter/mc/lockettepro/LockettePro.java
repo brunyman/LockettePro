@@ -18,8 +18,11 @@ public class LockettePro extends JavaPlugin {
     private static Plugin plugin;
     private boolean debug = false;
     private static boolean needcheckhand = true;
+    public static boolean is16version = true;
 
     public void onEnable(){
+    	plugin = this;
+    	checkMcVersion();
         // Version
         try {
             Material.BARREL.isItem();
@@ -31,7 +34,6 @@ public class LockettePro extends JavaPlugin {
         if (!isEnabled()) {
             return;
         }
-        plugin = this;
         // Read config
         new Config(this);
         // Register Listeners
@@ -57,6 +59,24 @@ public class LockettePro extends JavaPlugin {
         if (Config.isUuidEnabled() && Bukkit.getPluginManager().getPlugin("ProtocolLib") != null){
             DependencyProtocolLib.cleanUpProtocolLib(this);
         }
+    }
+    
+    private void checkMcVersion() {
+    	String[] serverVersion = Bukkit.getBukkitVersion().split("-");
+	    String version = serverVersion[0];
+	    if (version.matches("1.16") || version.matches("1.16.1") || version.matches("1.16.2")) {
+	    	plugin.getLogger().info("Compatible server version detected: " + version);
+	    	is16version = true;
+	    } else if (version.matches("1.15") || version.matches("1.15.1") || version.matches("1.15.2")) {
+	    	plugin.getLogger().info("Compatible server version detected: " + version);
+	    	is16version = false;
+	    } else if (version.matches("1.14") || version.matches("1.14.1") || version.matches("1.14.2") || version.matches("1.14.3") || version.matches("1.14.4")) {
+	    	plugin.getLogger().info("Compatible server version detected: " + version);
+	    	is16version = false;
+	    } else {
+	    	plugin.getLogger().info("Incompatible server version detected: " + version + " . Trying to run into 1.16 compatibility mode!");
+	    	is16version = true;
+	    }
     }
     
     public static Plugin getPlugin(){

@@ -56,7 +56,7 @@ public class Utils {
         }
         updateSign(newsign);
         Sign sign = (Sign)newsign.getState();
-        if (newsign.getType() == Material.DARK_OAK_WALL_SIGN) {
+        if (newsign.getType() == Material.DARK_OAK_WALL_SIGN || LockettePro.is16version && newsign.getType() == Material.CRIMSON_WALL_SIGN) {
             sign.setColor(DyeColor.WHITE);
         }
         sign.setLine(0, line1);
@@ -81,7 +81,9 @@ public class Utils {
     }
     
     public static void updateSign(Block block){
-        ((Sign)block.getState()).update();
+    	if (block.getState() instanceof Sign) {
+    		((Sign)block.getState()).update();
+    	}
     }
 
     public static Block getSelectedSign(Player player) {

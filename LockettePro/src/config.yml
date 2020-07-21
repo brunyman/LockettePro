@@ -49,5 +49,6 @@ lockables:
 - ACACIA_DOOR
 - DARK_OAK_DOOR
 - IRON_DOOR
+- LECTERN
 protection-exempt:
 - nothing

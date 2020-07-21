@@ -61,6 +61,67 @@ public class LocketteProAPI {
         return false;
     }
     
+    public static String getOwner(Block block){
+        switch (block.getType()){
+        // Double Doors
+        case OAK_DOOR:
+        case SPRUCE_DOOR:
+        case BIRCH_DOOR:
+        case JUNGLE_DOOR:
+        case ACACIA_DOOR:
+        case DARK_OAK_DOOR:
+        case IRON_DOOR:
+            Block[] doors = getDoors(block);
+            if (doors == null) return null;
+            for (BlockFace doorface : newsfaces){
+                Block relative0 = doors[0].getRelative(doorface), relative1 = doors[1].getRelative(doorface);
+                if (relative0.getType() == doors[0].getType() && relative1.getType() == doors[1].getType()){
+                    String f1 = getLockOwnerSingleBlock(relative1.getRelative(BlockFace.UP), doorface.getOppositeFace());
+                    String f2 = getLockOwnerSingleBlock(relative1, doorface.getOppositeFace());
+                    String f3 = getLockOwnerSingleBlock(relative0, doorface.getOppositeFace());
+                    String f4 = getLockOwnerSingleBlock(relative0.getRelative(BlockFace.DOWN), doorface.getOppositeFace());
+                    if (f1 != null) {
+                    	return f1;
+                    } else if (f2 != null) {
+                    	return f2;
+                    } else if (f3 != null) {
+                    	return f3;
+                    } else if (f4 != null) {
+                    	return f4;
+                    }
+                }
+            }
+            String f1 = getLockOwnerSingleBlock(doors[1].getRelative(BlockFace.UP), null);
+            String f2 = getLockOwnerSingleBlock(doors[1], null);
+            String f3 = getLockOwnerSingleBlock(doors[0], null);
+            String f4 = getLockOwnerSingleBlock(doors[0].getRelative(BlockFace.DOWN), null);
+            if (f1 != null) {
+            	return f1;
+            } else if (f2 != null) {
+            	return f2;
+            } else if (f3 != null) {
+            	return f3;
+            } else if (f4 != null) {
+            	return f4;
+            }
+            break;
+        // Chests (Second block only)
+        case CHEST:
+        case TRAPPED_CHEST:
+            // Check second chest sign
+            BlockFace chestface = getRelativeChestFace(block);
+            if (chestface != null) {
+                Block relativechest = block.getRelative(chestface);
+                return getLockOwnerSingleBlock(relativechest, chestface.getOppositeFace());
+            }
+            // Don't break here
+        // Everything else (First block of container check goes here)
+        default:
+            return getLockOwnerSingleBlock(block, null);
+        }
+        return null;
+    }
+    
     public static boolean isOwner(Block block, Player player){
         switch (block.getType()){
         // Double Doors
@@ -141,6 +202,9 @@ public class LocketteProAPI {
                 if (isUserSingleBlock(relativechest, chestface.getOppositeFace(), player)) return true;
             }
             // Don't break here
+        // Lecterns
+        case LECTERN:
+            return true; //Lecterns can be used, but not stolen from
         // Everything else (First block of container check goes here)
         default:
             if (isUserSingleBlock(block, null, player)) return true; 
@@ -180,6 +244,17 @@ public class LocketteProAPI {
             }
         }
         return false;
+    }
+    
+    public static String getLockOwnerSingleBlock(Block block, BlockFace exempt) {
+    	for (BlockFace blockface : newsfaces){
+            if (blockface == exempt) continue;
+            Block relativeblock = block.getRelative(blockface);
+            if (isLockSign(relativeblock) && getFacing(relativeblock) == blockface){
+                return getOwnerOnSign(relativeblock);
+            }
+        }
+    	return null;
     }
     
     public static boolean isUserSingleBlock(Block block, BlockFace exempt, Player player){ // Requires isLocked
@@ -383,6 +458,11 @@ public class LocketteProAPI {
             return true;
         }
         return false;
+    }
+    
+    public static String getOwnerOnSign(Block block){ // Requires isLockSign
+        String[] lines = ((Sign)block.getState()).getLines();
+        return lines[1];
     }
     
     public static boolean isUserOnSign(Block block, Player player){ // Requires (isLockSign or isAdditionalSign)
