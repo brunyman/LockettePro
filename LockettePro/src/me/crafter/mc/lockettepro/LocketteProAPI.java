@@ -632,6 +632,7 @@ public class LocketteProAPI {
         case CRIMSON_FENCE_GATE:
         case WARPED_FENCE_GATE:
         case ACACIA_FENCE_GATE:
+        case JUNGLE_FENCE_GATE:
         case ACACIA_TRAPDOOR: 
         case DARK_OAK_TRAPDOOR:
         case CRIMSON_TRAPDOOR:
