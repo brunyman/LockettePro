@@ -176,7 +176,7 @@ public class Config {
         String[] timer_signs = {"[Timer:@]", "[timer:@]"};
         config.addDefault("timer-signs", timer_signs);
         String[] lockables = {"CHEST","TRAPPED_CHEST","FURNACE","BURNING_FURNACE","HOPPER","BREWING_STAND","DIAMOND_BLOCK",
-                "OAK_DOOR","SPRUCE_DOOR","BIRCH_DOOR","JUNGLE_DOOR","ACACIA_DOOR","DARK_OAK_DOOR","IRON_DOOR", "LECTERN"};
+                "OAK_DOOR","SPRUCE_DOOR","BIRCH_DOOR","JUNGLE_DOOR","ACACIA_DOOR","DARK_OAK_DOOR","IRON_DOOR", "LECTERN", "CRIMSON_DOOR", "WARPED_DOOR"};
         config.addDefault("lockables", lockables);
         String[] protection_exempt = {"nothing"};
         config.addDefault("protection-exempt", protection_exempt);

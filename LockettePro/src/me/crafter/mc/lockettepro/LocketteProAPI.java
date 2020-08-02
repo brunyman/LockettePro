@@ -26,6 +26,8 @@ public class LocketteProAPI {
         case JUNGLE_DOOR:
         case ACACIA_DOOR:
         case DARK_OAK_DOOR:
+        case CRIMSON_DOOR:
+        case WARPED_DOOR:
         case IRON_DOOR:
             Block[] doors = getDoors(block);
             if (doors == null) return false;
@@ -43,6 +45,7 @@ public class LocketteProAPI {
             if (isLockedSingleBlock(doors[0], null)) return true; 
             if (isLockedSingleBlock(doors[0].getRelative(BlockFace.DOWN), null)) return true;
             break;
+        case LECTERN:
         // Chests (Second block only)
         case CHEST:
         case TRAPPED_CHEST:
@@ -70,6 +73,8 @@ public class LocketteProAPI {
         case JUNGLE_DOOR:
         case ACACIA_DOOR:
         case DARK_OAK_DOOR:
+        case CRIMSON_DOOR:
+        case WARPED_DOOR:
         case IRON_DOOR:
             Block[] doors = getDoors(block);
             if (doors == null) return null;
@@ -105,6 +110,7 @@ public class LocketteProAPI {
             	return f4;
             }
             break;
+        case LECTERN:
         // Chests (Second block only)
         case CHEST:
         case TRAPPED_CHEST:
@@ -131,6 +137,8 @@ public class LocketteProAPI {
         case JUNGLE_DOOR:
         case ACACIA_DOOR:
         case DARK_OAK_DOOR:
+        case CRIMSON_DOOR:
+        case WARPED_DOOR:
         case IRON_DOOR:
             Block[] doors = getDoors(block);
             if (doors == null) return false;
@@ -149,6 +157,7 @@ public class LocketteProAPI {
             if (isOwnerSingleBlock(doors[0].getRelative(BlockFace.DOWN), null, player)) return true;
             break;
         // Chests (Second block only)
+        case LECTERN:
         case CHEST:
         case TRAPPED_CHEST:
             // Check second chest sign
@@ -175,6 +184,8 @@ public class LocketteProAPI {
         case JUNGLE_DOOR:
         case ACACIA_DOOR:
         case DARK_OAK_DOOR:
+        case CRIMSON_DOOR:
+        case WARPED_DOOR:
         case IRON_DOOR:
             Block[] doors = getDoors(block);
             if (doors == null) return false;
@@ -317,6 +328,8 @@ public class LocketteProAPI {
             case JUNGLE_DOOR:
             case ACACIA_DOOR:
             case DARK_OAK_DOOR:
+            case CRIMSON_DOOR:
+            case WARPED_DOOR:
             case IRON_DOOR:
                 return true;
             default:
@@ -343,6 +356,8 @@ public class LocketteProAPI {
         case JUNGLE_DOOR:
         case ACACIA_DOOR:
         case DARK_OAK_DOOR:
+        case CRIMSON_DOOR:
+        case WARPED_DOOR:
         case IRON_DOOR:
             for (BlockFace blockface : newsfaces){
                 Block newblock = block.getRelative(blockface);
@@ -353,6 +368,8 @@ public class LocketteProAPI {
                 case JUNGLE_DOOR:
                 case ACACIA_DOOR:
                 case DARK_OAK_DOOR:
+                case CRIMSON_DOOR:
+                case WARPED_DOOR:
                 case IRON_DOOR:
                     if (isLocked(newblock) && !isOwner(newblock, player)){
                         return true;
@@ -612,9 +629,16 @@ public class LocketteProAPI {
         case OAK_FENCE_GATE:
         case SPRUCE_FENCE_GATE:
         case BIRCH_FENCE_GATE:
-        case JUNGLE_FENCE:
-        case ACACIA_DOOR: 
-        case DARK_OAK_DOOR:
+        case CRIMSON_FENCE_GATE:
+        case WARPED_FENCE_GATE:
+        case ACACIA_FENCE_GATE:
+        case ACACIA_TRAPDOOR: 
+        case DARK_OAK_TRAPDOOR:
+        case CRIMSON_TRAPDOOR:
+        case WARPED_TRAPDOOR:
+        case BIRCH_TRAPDOOR:
+        case OAK_TRAPDOOR:
+        case SPRUCE_TRAPDOOR:
         case IRON_TRAPDOOR:
             return true;
         default:
