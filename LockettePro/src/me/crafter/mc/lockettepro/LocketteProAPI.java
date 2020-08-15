@@ -46,6 +46,7 @@ public class LocketteProAPI {
             if (isLockedSingleBlock(doors[0].getRelative(BlockFace.DOWN), null)) return true;
             break;
         case LECTERN:
+        	return isLockedSingleBlock(block, null);
         // Chests (Second block only)
         case CHEST:
         case TRAPPED_CHEST:
@@ -111,7 +112,7 @@ public class LocketteProAPI {
             }
             break;
         case LECTERN:
-        // Chests (Second block only)
+            return getLockOwnerSingleBlock(block, null);
         case CHEST:
         case TRAPPED_CHEST:
             // Check second chest sign
@@ -158,6 +159,7 @@ public class LocketteProAPI {
             break;
         // Chests (Second block only)
         case LECTERN:
+        	return isOwnerSingleBlock(block, null, player);
         case CHEST:
         case TRAPPED_CHEST:
             // Check second chest sign
@@ -205,7 +207,7 @@ public class LocketteProAPI {
             break;
         // Lecterns
         case LECTERN:
-            return true; //Lecterns can be used, but not stolen from
+        	return isUserSingleBlock(block, null, player);
         // Chests (Second block only)
         case CHEST:
         case TRAPPED_CHEST:
