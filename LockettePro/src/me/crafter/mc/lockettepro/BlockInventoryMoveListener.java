@@ -38,8 +38,10 @@ public class BlockInventoryMoveListener implements Listener {
                 	if (isInventoryLocked(event.getDestination())) {
                 		Block sourceInventoryBlock = event.getSource().getLocation().getBlock();
                 		Block destinationInventoryBlock = event.getDestination().getLocation().getBlock();
-                		if (LocketteProAPI.getOwner(sourceInventoryBlock).matches(LocketteProAPI.getOwner(destinationInventoryBlock))) {
-                			event.setCancelled(false);
+                		if (sourceInventoryBlock != null && destinationInventoryBlock != null) {
+                			if (LocketteProAPI.getOwner(sourceInventoryBlock).matches(LocketteProAPI.getOwner(destinationInventoryBlock))) {
+                    			event.setCancelled(false);
+                    		}
                 		}
                 	}
                 }
