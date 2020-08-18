@@ -16,7 +16,7 @@ LockettePro is a block-protection plugin based on Lockette (https://github.com/A
 6. Lock expircy feature, locks can expire after a certain amount of time.
 
 ### Links
-Spigot release page: https://www.spigotmc.org/resources/lockettepro-for-1-14-1-15-1-16.74354/
+Spigot release page: https://www.spigotmc.org/resources/lockettepro-for-1-14-1-15-1-16.74354/  
 Bukkit release page: http://dev.bukkit.org/bukkit-plugins/lockettepro/  
 MCBBS release page: http://www.mcbbs.net/thread-567962-1-1.html    
 MC 1.6~1.7 Port: https://github.com/connection-lost/LockettePro/releases/tag/v1.9.4
