@@ -243,6 +243,9 @@ public class BlockPlayerListener implements Listener {
     public void onAttemptInteractLockedBlocks(PlayerInteractEvent event){
         Action action = event.getAction();
         Block block = event.getClickedBlock();
+        if (block == null) {
+            return;
+        }
         if (LockettePro.needCheckHand() && LocketteProAPI.isChest(block)){
             if (event.getHand() != EquipmentSlot.HAND){
                 if (action == Action.RIGHT_CLICK_BLOCK){
