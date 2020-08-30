@@ -3,7 +3,7 @@ main: me.crafter.mc.lockettepro.LockettePro
 author: connection_lost
 softdepend: [Vault, WorldGuard, ProtocolLib, CoreProtect]
 loadbefore: [SignShop]
-version: 2.10.4
+version: 2.10.5
 api-version: 1.13
 description: >
              LockettePro is a chest protection plugin for Bukkit. It is 100% compatible with original Lockette, but delivers a lot of performance enhancements and feature options.
