@@ -49,6 +49,7 @@ public class BlockPlayerListener implements Listener {
             BlockFace blockface = event.getBlockFace();
             if (blockface == BlockFace.NORTH || blockface == BlockFace.WEST || blockface == BlockFace.EAST || blockface == BlockFace.SOUTH){
                 Block block = event.getClickedBlock();
+                if (block == null) return;
                 // Check permission with external plugin
                 if (Dependency.isProtectedFrom(block, player)) return; // blockwise
                 if (Dependency.isProtectedFrom(block.getRelative(event.getBlockFace()), player)) return; // signwise
@@ -110,6 +111,7 @@ public class BlockPlayerListener implements Listener {
     public void onManualLock(SignChangeEvent event){
         if (!Tag.WALL_SIGNS.isTagged(event.getBlock().getType())) return;
         String topline = event.getLine(0);
+        if (topline == null) topline = "";
         Player player = event.getPlayer();
         /*  Issue #46 - Old version of Minecraft trim signs in unexpected way.
          *  This is caused by Minecraft was doing: (unconfirmed but seemingly)
@@ -179,8 +181,9 @@ public class BlockPlayerListener implements Listener {
     // Player select sign
     @EventHandler(priority = EventPriority.LOW)
     public void playerSelectSign(PlayerInteractEvent event){
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.hasBlock() && Tag.WALL_SIGNS.isTagged(event.getClickedBlock().getType())) {
-            Block block = event.getClickedBlock();
+        Block block = event.getClickedBlock();
+        if (block == null) return;
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.hasBlock() && Tag.WALL_SIGNS.isTagged(block.getType())) {
             Player player = event.getPlayer();
             if (!player.hasPermission("lockettepro.edit")) return;
             if (LocketteProAPI.isOwnerOfSign(block, player) || (LocketteProAPI.isLockSignOrAdditionalSign(block) && player.hasPermission("lockettepro.admin.edit"))){
