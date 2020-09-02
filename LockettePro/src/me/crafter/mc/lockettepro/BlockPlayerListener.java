@@ -240,7 +240,8 @@ public class BlockPlayerListener implements Listener {
 
     // Protect block from being used & handle double doors
     @EventHandler(priority = EventPriority.HIGH)
-    public void onAttemptInteractLockedBlocks(PlayerInteractEvent event){
+    public void onAttemptInteractLockedBlocks(PlayerInteractEvent event) {
+    	if (event.hasBlock() == false) return;
         Action action = event.getAction();
         Block block = event.getClickedBlock();
         if (LockettePro.needCheckHand() && LocketteProAPI.isChest(block)){
@@ -259,18 +260,13 @@ public class BlockPlayerListener implements Listener {
         case LEFT_CLICK_BLOCK:
         case RIGHT_CLICK_BLOCK:
             Player player = event.getPlayer();
-            //System.out.println("Debug 1 - " + action);
             if (((LocketteProAPI.isLocked(block) && !LocketteProAPI.isUser(block, player)) || (LocketteProAPI.isUpDownLockedDoor(block) && !LocketteProAPI.isUserUpDownLockedDoor(block, player))) && !player.hasPermission("lockettepro.admin.use")){
                 Utils.sendMessages(player, Config.getLang("block-is-locked"));
                 event.setCancelled(true);
                 Utils.playAccessDenyEffect(player, block);
-                //System.out.println("Debug 2 - ");
             } else { // Handle double doors
-            	//System.out.println("Debug 3 - ");
                 if (action == Action.RIGHT_CLICK_BLOCK) {
-                	//System.out.println("Debug 4 - ");
                     if ((LocketteProAPI.isDoubleDoorBlock(block) || LocketteProAPI.isSingleDoorBlock(block)) && LocketteProAPI.isLocked(block)){
-                    	//System.out.println("Debug 5 - ");
                         Block doorblock = LocketteProAPI.getBottomDoorBlock(block);
                         org.bukkit.block.data.Openable openablestate = (org.bukkit.block.data.Openable ) doorblock.getBlockData();
                         boolean shouldopen = !openablestate.isOpen(); // Move to here
@@ -279,27 +275,23 @@ public class BlockPlayerListener implements Listener {
                         doors.add(doorblock);
                         if (doorblock.getType() == Material.IRON_DOOR || doorblock.getType() == Material.IRON_TRAPDOOR){
                             LocketteProAPI.toggleDoor(doorblock, shouldopen);
-                            //System.out.println("Debug 6 - ");
                         }
                         for (BlockFace blockface : LocketteProAPI.newsfaces){
                             Block relative = doorblock.getRelative(blockface);
                             if (relative.getType() == doorblock.getType()){
                                 doors.add(relative);
                                 LocketteProAPI.toggleDoor(relative, shouldopen);
-                                //System.out.println("Debug 7 - ");
                             }
                         }
                         if (closetime > 0) {
                             for (Block door : doors) {
                                 if (door.hasMetadata("lockettepro.toggle")) {
-                                	//System.out.println("Debug 8 - ");
                                     return;
                                 }
                             }
                             for (Block door : doors) {
                                 door.setMetadata("lockettepro.toggle", new FixedMetadataValue(LockettePro.getPlugin(), true));
                             }
-                            //System.out.println("Debug 9 - ");
                             Bukkit.getScheduler().runTaskLater(LockettePro.getPlugin(), new DoorToggleTask(doors), closetime*20);
                         }
                     }
