@@ -86,14 +86,16 @@ public class BlockPlayerListener implements Listener {
                         Dependency.logPlacement(player, newsign);
                     } else if (!locked && LocketteProAPI.isOwnerUpDownLockedDoor(block, player)){
                         // Not locked, (is locked door nearby), is owner of locked door nearby
+                        Material signType = player.getInventory().getItemInMainHand().getType();
                         Utils.removeASign(player);
                         Utils.sendMessages(player, Config.getLang("additional-sign-added-quick"));
-                        Utils.putSignOn(block, blockface, Config.getDefaultAdditionalString(), "", player.getInventory().getItemInMainHand().getType());
+                        Utils.putSignOn(block, blockface, Config.getDefaultAdditionalString(), "", signType);
                         Dependency.logPlacement(player, block.getRelative(blockface));
                     } else if (LocketteProAPI.isOwner(block, player)) {
                         // Locked, (not locked door nearby), is owner of locked block
+                        Material signType = player.getInventory().getItemInMainHand().getType();
                         Utils.removeASign(player);
-                        Utils.putSignOn(block, blockface, Config.getDefaultAdditionalString(), "", player.getInventory().getItemInMainHand().getType());
+                        Utils.putSignOn(block, blockface, Config.getDefaultAdditionalString(), "", signType);
                         Utils.sendMessages(player, Config.getLang("additional-sign-added-quick"));
                         Dependency.logPlacement(player, block.getRelative(blockface));
                     } else {
