@@ -30,7 +30,7 @@ public class LockettePro extends JavaPlugin {
             setEnabled(false);
             getLogger().warning("This plugin is not compatible with your server version!");
         }
-        getLogger().warning("===================================");
+        getLogger().info("===================================");
         if (!isEnabled()) {
             return;
         }
@@ -64,7 +64,7 @@ public class LockettePro extends JavaPlugin {
     private void checkMcVersion() {
     	String[] serverVersion = Bukkit.getBukkitVersion().split("-");
 	    String version = serverVersion[0];
-	    if (version.matches("1.16") || version.matches("1.16.1") || version.matches("1.16.2") || version.matches("1.16.3")) {
+	    if (version.matches("1.16") || version.matches("1.16.1") || version.matches("1.16.2") || version.matches("1.16.3") || version.matches("1.16.4")) {
 	    	plugin.getLogger().info("Compatible server version detected: " + version);
 	    	is16version = true;
 	    } else if (version.matches("1.15") || version.matches("1.15.1") || version.matches("1.15.2")) {
