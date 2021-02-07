@@ -32,17 +32,14 @@ public class Dependency {
             RegisteredServiceProvider<Permission> rsp = Bukkit.getServer().getServicesManager().getRegistration(Permission.class);
             permission = rsp.getProvider();
         }
-        //&& CoreProtect.getInstance().getAPI().APIVersion() == 6
         if (Config.coreprotect && Bukkit.getPluginManager().getPlugin("CoreProtect") != null) {
-            if (!coreProtectAPI.isEnabled()) {
-                coreProtectAPI = null;
-                plugin.getLogger().warning("CoreProtect API is not enabled!");
-            } else {
-            	try {
-            		coreProtectAPI = CoreProtect.getInstance().getAPI();
-            	} catch (Exception e) {
-            		e.printStackTrace();
-            	}
+            try {
+                coreProtectAPI = CoreProtect.getInstance().getAPI();
+                if (!coreProtectAPI.isEnabled()) {
+                    plugin.getLogger().warning("CoreProtect API is not enabled!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
