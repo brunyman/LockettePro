@@ -42,7 +42,7 @@ public class BlockInventoryMoveListener implements Listener {
                 			String sourceOwner = LocketteProAPI.getOwner(sourceInventoryBlock);
                 			String destOwner = LocketteProAPI.getOwner(destinationInventoryBlock);
                 			 if (destOwner != null && sourceOwner != null) {
-                				 if (sourceOwner.matches(destOwner)) {
+                				 if (sourceOwner.equalsIgnoreCase(destOwner)) {
                          			event.setCancelled(false);
                          		}
                 			 }
