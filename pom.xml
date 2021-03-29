@@ -37,10 +37,6 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>
                                 <relocation>
-                                    <pattern>com.comphenix</pattern>
-                                    <shadedPattern>me.crafter.mc.shaded.com.comphenix</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>net.sf.cglib</pattern>
                                     <shadedPattern>me.crafter.mc.shaded.net.sf.cglib</shadedPattern>
                                 </relocation>
@@ -94,7 +90,6 @@
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>4.6.0</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.coreprotect</groupId>
