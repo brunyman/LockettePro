@@ -21,6 +21,7 @@ import org.bukkit.event.player.PlayerTakeLecternBookEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
+import java.util.Objects;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -247,6 +248,7 @@ public class BlockPlayerListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onAttemptInteractLockedBlocks(PlayerInteractEvent event) {
     	if (event.hasBlock() == false) return;
+        if (Objects.equals(event.getHand(), EquipmentSlot.OFF_HAND)) return;
         Action action = event.getAction();
         Block block = event.getClickedBlock();
         if (LockettePro.needCheckHand() && LocketteProAPI.isChest(block)){
