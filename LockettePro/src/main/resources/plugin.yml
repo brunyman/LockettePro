@@ -1,0 +1,25 @@
+name: ${project.artifactId}
+main: ${project.groupId}.${project.artifactId.lowercase}.${project.artifactId}
+author: connection_lost
+softdepend: [Vault, WorldGuard, ProtocolLib, CoreProtect]
+loadbefore: [SignShop]
+version: ${project.version}
+api-version: 1.13
+description: >
+  LockettePro is a chest protection plugin for Bukkit. It is 100% compatible with original Lockette, but delivers a lot of performance enhancements and feature options.
+commands:
+  lockettepro:
+    permission: lockettepro.command
+    usage: |
+      /lock
+    aliases: [lock, lockette, lockit]
+permissions:
+  lockettepro.command:
+    description: Command permission for LockettePro
+    default: true
+  lockettepro.lock:
+    description: Basic lock permission
+    default: true
+  lockettepro.edit:
+    description: Edit sign permission
+    default: true
