@@ -2,6 +2,10 @@
 ### LockettePro - A much better Lockette plugin for Bukkit
 
 상자 잠금 플러그인 Lockette의 1.17.1 대응,한국어 지원 버전입니다.
+최신 버전은 우측의 Releases 탭 또는 다음 링크에서 확인할 수 있습니다.
+https://github.com/imirochi/LockettePro/releases
+
+
 
 This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro  
 Also contains updates from: https://github.com/NyaaCat/LockettePro  
