@@ -4,7 +4,7 @@
 
 language-file-name: 'lang_ko.yml'
 enable-quick-protect: true
-enable-uuid-support: true
+enable-uuid-support: false
 protocollib: true
 worldguard: true
 coreprotect: true

@@ -2,7 +2,7 @@
 # https://github.com/connection-lost/LockettePro/wiki/*-config.yml
 # If there are missing entries, you can add them manually.
 
-language-file-name: 'lang.yml'
+language-file-name: 'lang_ko.yml'
 enable-quick-protect: true
 enable-uuid-support: false
 protocollib: true
@@ -16,18 +16,23 @@ cache-time-seconds: 0
 lock-expire: false
 lock-expire-days: 999.9
 lock-default-create-time-unix: -1
-lock-expire-string: '&3[Expired]'
+lock-expire-string: '&3[만료]'
 
 private-signs:
+- '[보호]'
+- '[잠금]'
 - '[Private]'
 - '[private]'
 additional-signs:
+- '[추가]'
 - '[More Users]'
 - '[more users]'
 everyone-signs:
+- '[모두]'
 - '[Everyone]'
 - '[everyone]'
 timer-signs:
+- '[타이머:@]'
 - '[Timer:@]'
 - '[timer:@]'
 # material name see: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html

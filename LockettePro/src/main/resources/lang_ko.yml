@@ -1,4 +1,4 @@
-command-usage: "&6[LockettePro] &bLockettePro 플러그인 도움말\n&c1. 표지판에 유저를 추가하려면, 표지판을 우클릭하고, 명령어 /lock <줄 번호> <텍스트> 를 입력해 줄을 수정할 수 있습니다.\n&c2. 설정을 리로드하려면, 명령어 /lock reload 를 입력하세요.\nLockettePro by connection_lost"
+command-usage: "&6[LockettePro] &bLockettePro 플러그인 도움말\n&c1. 표지판에 유저를 추가하려면, 표지판을 우클릭하고, 명령어 /lock <줄 번호> <텍스트> 를 입력해 줄을 수정할 수 있습니다.\n&c2. 설정을 리로드하려면, 명령어 /lock reload 를 입력하세요.\nLockettePro by connection_lost, Korean trnaslation by irochi.moe"
 you-can-quick-lock-it: '&6[LockettePro] &a표지판으로 우클릭해 블록을 잠급니다.'
 you-can-manual-lock-it: '&6[LockettePro] &a표지판을 설치해 [Private] 를 적어 잠급니다.'
 config-reloaded: '&6[LockettePro] &a설정 리로드됨.'
