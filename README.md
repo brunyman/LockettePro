@@ -1,5 +1,5 @@
 # LockettePro - ko
-Send message between Twitch Chat and Minecraft Chat!
+Simply lock your chest and door with signs!
 
 forked from brunyman/LockettePro
 
