@@ -22,7 +22,9 @@ https://github.com/imirochi/LockettePro/releases/latest
 
 
 
-# LockettePro
+# Original README
+### LockettePro - A much better Lockette plugin for Bukkit
+
 This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro  
 Also contains updates from: https://github.com/NyaaCat/LockettePro  
 
