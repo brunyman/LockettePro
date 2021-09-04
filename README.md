@@ -22,6 +22,7 @@ https://github.com/imirochi/LockettePro/releases/latest
 
 
 
+# LockettePro
 This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro  
 Also contains updates from: https://github.com/NyaaCat/LockettePro  
 
