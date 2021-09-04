@@ -34,7 +34,7 @@ public class BlockDebugListener implements Listener {
                 p.sendMessage(" - now     : " + (int)(System.currentTimeMillis()/1000));
             }
             
-            p.sendMessage("Block: " + b.getType().toString() + " " + b.getData());
+            p.sendMessage("Block: " + b.getType().name() + " " + b.getData());
             
             if (Tag.WALL_SIGNS.isTagged(b.getType())){
                 for (String line : ((Sign)b.getState()).getLines()){
@@ -46,11 +46,7 @@ public class BlockDebugListener implements Listener {
     }
     
     public String formatBoolean(boolean tf){
-        if (tf){
-            return ChatColor.GREEN + "true";
-        } else {
-            return ChatColor.RED + "false";
-        }
+        return (tf) ? ChatColor.GREEN + "true" : ChatColor.RED + "false";
     }
 
 }

@@ -55,7 +55,6 @@ public class BlockInventoryMoveListener implements Listener {
         if (Config.isItemTransferInBlocked()){
             if (isInventoryLocked(event.getDestination())){
                 event.setCancelled(true);
-                return;
             }
         }
     }
@@ -80,11 +79,7 @@ public class BlockInventoryMoveListener implements Listener {
                     }
                 }
             } else { // Cache is disabled
-                if (LocketteProAPI.isLocked(block)){
-                    return true;
-                } else {
-                    return false;
-                }
+                return LocketteProAPI.isLocked(block);
             }
         }
         return false;

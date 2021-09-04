@@ -79,11 +79,8 @@ public class BlockPlayerListener implements Listener {
                         }
                         // Cleanups - Expiracy
                         if (Config.isLockExpire()) {
-                            if (player.hasPermission("lockettepro.noexpire")) {
-                                Utils.updateLineWithTime(newsign, true); // set created to -1 (no expire)
-                            } else {
-                                Utils.updateLineWithTime(newsign, false); // set created to now
-                            }
+                            // set created to now
+                            Utils.updateLineWithTime(newsign, player.hasPermission("lockettepro.noexpire")); // set created to -1 (no expire)
                         }
                         Dependency.logPlacement(player, newsign);
                     } else if (!locked && LocketteProAPI.isOwnerUpDownLockedDoor(block, player)){
@@ -247,7 +244,7 @@ public class BlockPlayerListener implements Listener {
     // Protect block from being used & handle double doors
     @EventHandler(priority = EventPriority.HIGH)
     public void onAttemptInteractLockedBlocks(PlayerInteractEvent event) {
-    	if (event.hasBlock() == false) return;
+    	if (!event.hasBlock()) return;
         if (Objects.equals(event.getHand(), EquipmentSlot.OFF_HAND)) return;
         Action action = event.getAction();
         Block block = event.getClickedBlock();
@@ -299,13 +296,11 @@ public class BlockPlayerListener implements Listener {
                             for (Block door : doors) {
                                 door.setMetadata("lockettepro.toggle", new FixedMetadataValue(LockettePro.getPlugin(), true));
                             }
-                            Bukkit.getScheduler().runTaskLater(LockettePro.getPlugin(), new DoorToggleTask(doors), closetime*20);
+                            Bukkit.getScheduler().runTaskLater(LockettePro.getPlugin(), new DoorToggleTask(doors), (closetime * 20L));
                         }
                     }
                 }
             }
-            break;
-        default:
             break;
         }
     }

@@ -27,22 +27,14 @@ public class BlockEnvironmentListener implements Listener{
     @EventHandler(priority = EventPriority.HIGH)
     public void onEntityExplode(EntityExplodeEvent event){
         if (Config.isProtectionExempted("explosion")) return;
-        Iterator<Block> it = event.blockList().iterator();
-        while (it.hasNext()) {
-            Block block = it.next();
-            if (LocketteProAPI.isProtected(block)) it.remove();
-        }
+        event.blockList().removeIf(LocketteProAPI::isProtected);
     }
     
     // Prevent bed break block
     @EventHandler(priority = EventPriority.HIGH)
     public void onBlockExplode(BlockExplodeEvent event){
         if (Config.isProtectionExempted("explosion")) return;
-        Iterator<Block> it = event.blockList().iterator();
-        while (it.hasNext()) {
-            Block block = it.next();
-            if (LocketteProAPI.isProtected(block)) it.remove();
-        }
+        event.blockList().removeIf(LocketteProAPI::isProtected);
     }
     
     // Prevent tree break block

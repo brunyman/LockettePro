@@ -74,7 +74,10 @@ public class LockettePro extends JavaPlugin {
 	    } else if (version.matches("1.14") || version.matches("1.14.1") || version.matches("1.14.2") || version.matches("1.14.3") || version.matches("1.14.4")) {
 	    	plugin.getLogger().info("Compatible server version detected: " + version);
 	    	is16version = false;
-	    } else {
+	    } else if (version.matches("1.17") || version.matches("1.17.1")) {
+            plugin.getLogger().info("Compatible server version detected: " + version);
+            is16version = true;
+        } else {
 	    	plugin.getLogger().info("Incompatible server version detected: " + version + " . Trying to run into 1.16 compatibility mode!");
 	    	is16version = true;
 	    }

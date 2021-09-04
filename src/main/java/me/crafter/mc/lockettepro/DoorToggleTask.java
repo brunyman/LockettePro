@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DoorToggleTask implements Runnable{
 
-    private List<Block> doors;
+    private final List<Block> doors;
     
     public DoorToggleTask(List<Block> doors_){
         doors = doors_;

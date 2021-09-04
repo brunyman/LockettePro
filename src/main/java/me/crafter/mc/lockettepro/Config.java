@@ -9,10 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Config {
 
@@ -82,19 +79,19 @@ public class Config {
         List<String> additionalstringlist = config.getStringList("additional-signs");
         List<String> everyonestringlist = config.getStringList("everyone-signs");
         List<String> protectionexemptstringlist = config.getStringList("protection-exempt");
-        privatestrings = new HashSet<String>(privatestringlist);
-        additionalstrings = new HashSet<String>(additionalstringlist);
-        everyonestrings = new HashSet<String>(everyonestringlist);
-        protectionexempt = new HashSet<String>(protectionexemptstringlist);
+        privatestrings = new HashSet<>(privatestringlist);
+        additionalstrings = new HashSet<>(additionalstringlist);
+        everyonestrings = new HashSet<>(everyonestringlist);
+        protectionexempt = new HashSet<>(protectionexemptstringlist);
         defaultprivatestring = privatestringlist.get(0);
         defaultadditionalstring = additionalstringlist.get(0);
         
         List<String> timerstringlist = config.getStringList("timer-signs");
-        List<String> timerstringlist2 = new ArrayList<String>();
+        List<String> timerstringlist2 = new ArrayList<>();
         for (String timerstring : timerstringlist){
             if (timerstring.contains("@")) timerstringlist2.add(timerstring);
         }
-        timerstrings = new HashSet<String>(timerstringlist2);
+        timerstrings = new HashSet<>(timerstringlist2);
 
         cachetime = config.getInt("cache-time-seconds", 0) * 1000;
         cacheenabled = (config.getInt("cache-time-seconds", 0) > 0);
@@ -125,12 +122,10 @@ public class Config {
         lockexpirestring = ChatColor.translateAlternateColorCodes('&', 
                 config.getString("lock-expire-string", "&3[Expired]"));
         List<String> unprocesseditems = config.getStringList("lockables");
-        lockables = new HashSet<Material>();
+        lockables = new HashSet<>();
         for (String unprocesseditem : unprocesseditems){
             if (unprocesseditem.equals("*")){
-                for (Material material : Material.values()){
-                    lockables.add(material);
-                }
+                Collections.addAll(lockables, Material.values());
                 plugin.getLogger().info("All blocks are default to be lockable!");
                 plugin.getLogger().info("Add '-<Material>' to exempt a block, such as '-STONE'!");
                 continue;
@@ -258,7 +253,7 @@ public class Config {
                 try {
                     int seconds = Integer.parseInt(newmessage);
                     return Math.min(seconds, 20);
-                } catch (Exception ex){}
+                } catch (Exception ignored) { }
             }
         }
         return 0;

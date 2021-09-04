@@ -46,9 +46,7 @@ public class Dependency {
     
     public static boolean isProtectedFrom(Block block, Player player){
         if (worldguard != null) {
-            if (!worldguard.createProtectionQuery().testBlockPlace(player, block.getLocation(), block.getType())) {
-                return true;
-            }
+            return !worldguard.createProtectionQuery().testBlockPlace(player, block.getLocation(), block.getType());
         }
         return false;
     }
@@ -60,7 +58,7 @@ public class Dependency {
                 for (String group : groups){
                     if (line.equals("[" + group + "]")) return true;
                 }
-            } catch (Exception e){}
+            } catch (Exception ignored) { }
         }
         return false;
     }
