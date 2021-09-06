@@ -1,13 +1,31 @@
 # LockettePro - ko
+Simply lock your chest and door with signs!
+
+forked from brunyman/LockettePro
+
+
+## 표지판 하나로 상자와 문을 잠글 수 있습니다!
+
+
+### 주요 기능
+1. 상자, 철문 등에 표지판을 설치해 자신만 사용할 수 있게 보호
+2. 보호된 상자, 철문 등에 본인 이외의 유저를 닉네임으로 추가
+
+
+### 기본 설정
+설정이 따로 필요 없습니다! 플러그인을 넣고 /lock 를 쳐보세요!
+
+### 다운로드
+최신 버전은 우측의 Releases 탭 또는 다음 링크에서 다운로드할 수 있습니다.
+
+https://github.com/imirochi/LockettePro/releases/latest
+
+
+
+
+
+## Original README
 ### LockettePro - A much better Lockette plugin for Bukkit
-
-상자 잠금 플러그인 Lockette의 1.17.1 대응,한국어 지원 버전입니다.
-
-최신 버전은 우측의 Releases 탭 또는 다음 링크에서 확인할 수 있습니다.
-
-https://github.com/imirochi/LockettePro/releases
-
-
 
 This fork is a continuation of the origial plugin: https://github.com/connection-lost/LockettePro  
 Also contains updates from: https://github.com/NyaaCat/LockettePro  
