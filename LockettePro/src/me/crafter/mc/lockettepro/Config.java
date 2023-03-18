@@ -196,7 +196,7 @@ public class Config {
     
     public static void initAdditionalFiles(){
         String[] availablefiles = {"lang.yml", "lang_zh-cn.yml", "lang_zh-tw.yml", "lang_es.yml", "lang_it.yml", "lang_de.yml",
-                "lang_hu.yml", "lang_pl.yml", "lang_fr.yml", "lang_ja.yml"};
+                "lang_hu.yml", "lang_pl.yml", "lang_fr.yml", "lang_ja.yml", "lang_ko.yml"};
         for (String filename : availablefiles){
             File langfile = new File(plugin.getDataFolder(), filename);
             if (!langfile.exists()){
